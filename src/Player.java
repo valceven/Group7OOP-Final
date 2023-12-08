@@ -9,6 +9,10 @@ public class Player extends Entity{
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
+    private BufferedImage[] knightLeft = new BufferedImage[8];
+    private BufferedImage[] knightRight = new BufferedImage[8];
+    private BufferedImage[] knightUp = new BufferedImage[8];
+    private BufferedImage[] knightDown = new BufferedImage[8];
 
     public Player(GamePanel gamePanel,KeyHandler keyH){
         this.gamePanel = gamePanel;
@@ -23,7 +27,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
         worldX = gamePanel.tileSize * 16;
         worldY = gamePanel.tileSize * 18;
-        speed = 3;
+        speed = 4;
         direction = "down";
     }
 
@@ -72,15 +76,39 @@ public class Player extends Entity{
                 switch (direction) {
                     case "up":
                         worldY -= speed;
+                        if(keyH.right){
+                            worldX += speed/2;
+                        }
+                        else if(keyH.left){
+                            worldX -= speed/2;
+                        }
                         break;
                     case "down":
                         worldY += speed;
+                        if(keyH.right){
+                            worldX += speed/2;
+                        }
+                        else if(keyH.left){
+                            worldX -= speed/2;
+                        }
                         break;
                     case "right":
                         worldX += speed;
+                        if(keyH.up){
+                            worldY += speed/2;
+                        }
+                        else if(keyH.down){
+                            worldY -= speed/2;
+                        }
                         break;
                     case "left":
                         worldX -= speed;
+                        if(keyH.up){
+                            worldY += speed/2;
+                        }
+                        else if(keyH.down){
+                            worldY -= speed/2;
+                        }
                         break;
                 }
             }

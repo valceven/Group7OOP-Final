@@ -14,9 +14,14 @@ public class GamePanel extends JPanel implements Runnable{
     public final int worldWidth = tileSize * maxWorldColumn;
     public final int worldHeight = tileSize * maxWorldRow;
     public Collision collision = new Collision(this);
-
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
+//    private final Ui ui = new Ui(this);
+    public final int titleState = 0; //Mao ni ako ge usab
+    public static int gameState = 0; //Mao ni ako ge usab
+    public static int pauseState = 2;
+    public static int optionState = 3;
+    public static int helpState = 4;
     int FPS = 60;
     public Player player = new Player(this,keyH);
     TileManager tileM = new
@@ -68,8 +73,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D)g;
-        tileM.draw(graphics);
-        player.draw(graphics);
-        graphics.dispose();
+//        if(gameState == titleState){
+//            ui.draw(graphics);
+//        }else{
+            tileM.draw(graphics);
+            player.draw(graphics);
+            graphics.dispose();
+//        }
+
     }
 }
