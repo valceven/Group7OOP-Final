@@ -1,3 +1,8 @@
+package main;
+import tile.*;
+import entity.Entity;
+import main.GamePanel;
+
 public class Collision {
 
     GamePanel gamePanel;
@@ -17,7 +22,7 @@ public class Collision {
         int entityTopRow = entityTopWorldY/gamePanel.tileSize;
         int entityBottomRow = entityBottomWorldY/gamePanel.tileSize;
 
-        int t1,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20,t21,t22,t23,t42,t45,t46,t47,t48,t49,t50,t51,t52,t53,t54;
+        int t1,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20,t21,t22,t23,t42,t46,t47,t50,t51,t53,t54;
 
         switch(entity.direction){
             case "up" :
@@ -44,14 +49,10 @@ public class Collision {
                 t22 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t23 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t42 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                t45 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t46 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t47 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
-                t48 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                t49 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t50 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t51 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
-                t52 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t53 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t54 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 if(gamePanel.tileM.tile[t1].collision || gamePanel.tileM.tile[t4].collision  ||
@@ -65,10 +66,8 @@ public class Collision {
                         gamePanel.tileM.tile[t19].collision || gamePanel.tileM.tile[t20].collision||
                         gamePanel.tileM.tile[t21].collision || gamePanel.tileM.tile[t22].collision||
                         gamePanel.tileM.tile[t23].collision || gamePanel.tileM.tile[t42].collision||
-                        gamePanel.tileM.tile[t45].collision || gamePanel.tileM.tile[t46].collision||
-                        gamePanel.tileM.tile[t47].collision || gamePanel.tileM.tile[t48].collision||
-                        gamePanel.tileM.tile[t49].collision || gamePanel.tileM.tile[t50].collision||
-                        gamePanel.tileM.tile[t51].collision || gamePanel.tileM.tile[t52].collision||
+                        gamePanel.tileM.tile[t46].collision|| gamePanel.tileM.tile[t47].collision ||
+                        gamePanel.tileM.tile[t50].collision|| gamePanel.tileM.tile[t51].collision ||
                         gamePanel.tileM.tile[t53].collision || gamePanel.tileM.tile[t54].collision){
                     entity.collide = true;
                 }
@@ -97,14 +96,10 @@ public class Collision {
                 t22 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t23 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t42 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                t45 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t46 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t47 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                t48 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                t49 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t50 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t51 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                t52 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t53 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t54 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 if(gamePanel.tileM.tile[t1].collision || gamePanel.tileM.tile[t4].collision  ||
@@ -118,10 +113,8 @@ public class Collision {
                         gamePanel.tileM.tile[t19].collision || gamePanel.tileM.tile[t20].collision||
                         gamePanel.tileM.tile[t21].collision || gamePanel.tileM.tile[t22].collision||
                         gamePanel.tileM.tile[t23].collision || gamePanel.tileM.tile[t42].collision||
-                        gamePanel.tileM.tile[t45].collision || gamePanel.tileM.tile[t46].collision||
-                        gamePanel.tileM.tile[t47].collision || gamePanel.tileM.tile[t48].collision||
-                        gamePanel.tileM.tile[t49].collision || gamePanel.tileM.tile[t50].collision||
-                        gamePanel.tileM.tile[t51].collision || gamePanel.tileM.tile[t52].collision||
+                        gamePanel.tileM.tile[t46].collision|| gamePanel.tileM.tile[t47].collision ||
+                        gamePanel.tileM.tile[t50].collision|| gamePanel.tileM.tile[t51].collision ||
                         gamePanel.tileM.tile[t53].collision || gamePanel.tileM.tile[t54].collision){
                     entity.collide = true;
                 }
@@ -150,14 +143,10 @@ public class Collision {
                 t22 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t23 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t42 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                t45 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t46 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t47 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                t48 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                t49 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t50 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t51 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                t52 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 t53 = gamePanel.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 t54 = gamePanel.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 if(gamePanel.tileM.tile[t1].collision || gamePanel.tileM.tile[t4].collision  ||
@@ -171,10 +160,8 @@ public class Collision {
                         gamePanel.tileM.tile[t19].collision || gamePanel.tileM.tile[t20].collision||
                         gamePanel.tileM.tile[t21].collision || gamePanel.tileM.tile[t22].collision||
                         gamePanel.tileM.tile[t23].collision || gamePanel.tileM.tile[t42].collision||
-                        gamePanel.tileM.tile[t45].collision || gamePanel.tileM.tile[t46].collision||
-                        gamePanel.tileM.tile[t47].collision || gamePanel.tileM.tile[t48].collision||
-                        gamePanel.tileM.tile[t49].collision || gamePanel.tileM.tile[t50].collision||
-                        gamePanel.tileM.tile[t51].collision || gamePanel.tileM.tile[t52].collision||
+                        gamePanel.tileM.tile[t46].collision|| gamePanel.tileM.tile[t47].collision ||
+                        gamePanel.tileM.tile[t50].collision|| gamePanel.tileM.tile[t51].collision ||
                         gamePanel.tileM.tile[t53].collision || gamePanel.tileM.tile[t54].collision){
                     entity.collide = true;
                 }
@@ -203,14 +190,10 @@ public class Collision {
                 t22 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t23 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t42 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                t45 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t46 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t47 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
-                t48 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                t49 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t50 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t51 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
-                t52 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 t53 = gamePanel.tileM.mapTileNum[entityRightCol][entityTopRow];
                 t54 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if(gamePanel.tileM.tile[t1].collision || gamePanel.tileM.tile[t4].collision  ||
@@ -224,10 +207,8 @@ public class Collision {
                         gamePanel.tileM.tile[t19].collision || gamePanel.tileM.tile[t20].collision||
                         gamePanel.tileM.tile[t21].collision || gamePanel.tileM.tile[t22].collision||
                         gamePanel.tileM.tile[t23].collision || gamePanel.tileM.tile[t42].collision||
-                        gamePanel.tileM.tile[t45].collision || gamePanel.tileM.tile[t46].collision||
-                        gamePanel.tileM.tile[t47].collision || gamePanel.tileM.tile[t48].collision||
-                        gamePanel.tileM.tile[t49].collision || gamePanel.tileM.tile[t50].collision||
-                        gamePanel.tileM.tile[t51].collision || gamePanel.tileM.tile[t52].collision||
+                        gamePanel.tileM.tile[t46].collision|| gamePanel.tileM.tile[t47].collision ||
+                        gamePanel.tileM.tile[t50].collision|| gamePanel.tileM.tile[t51].collision ||
                         gamePanel.tileM.tile[t53].collision || gamePanel.tileM.tile[t54].collision){
                     entity.collide = true;
                 }

@@ -1,3 +1,8 @@
+package tile;
+
+import main.GamePanel;
+import tile.Tile;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -8,8 +13,8 @@ import java.io.InputStreamReader;
 public class TileManager {
 
     GamePanel gamePanel;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
 
     public TileManager(GamePanel gamePanel){
@@ -29,7 +34,7 @@ public class TileManager {
 
                 if (i != 2 && i != 3 && i != 24 && i != 25 && i != 26 && i != 27 && i != 28 && i != 29 &&
                         i != 30 && i != 31 && i != 32 && i != 33 && i != 34 && i != 35 && i != 36 && i != 37 &&
-                        i != 38 && i != 39 && i != 40 && i != 41 && i != 43 && i != 44) {
+                        i != 38 && i != 39 && i != 40 && i != 41 && i != 43 && i != 44 && i != 45 && i != 48 && i != 49 && i != 52) {
                     tile[i].collision = true;
                 }
             }
