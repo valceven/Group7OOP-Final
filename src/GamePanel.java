@@ -14,7 +14,6 @@ public class GamePanel extends JPanel implements Runnable{
     public final int worldWidth = tileSize * maxWorldColumn;
     public final int worldHeight = tileSize * maxWorldRow;
     public Collision collision = new Collision(this);
-    KeyHandler keyH = new KeyHandler();
     Thread gameThread;
 //    private final Ui ui = new Ui(this);
     public final int titleState = 0; //Mao ni ako ge usab
@@ -23,15 +22,15 @@ public class GamePanel extends JPanel implements Runnable{
     public static int optionState = 3;
     public static int helpState = 4;
     int FPS = 60;
-    public Player player = new Player(this,keyH);
-    TileManager tileM = new
-            TileManager(this);
+    EntityHandler entityHandler = EntityHandler.getInstance(this);
+    public Player player = new Player(this,entityHandler.keyH);
+    TileManager tileM = new TileManager(this);
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-        this.addKeyListener(keyH);
+        this.addKeyListener(entityHandler.keyH);
         this.setFocusable(true);
     }
 
