@@ -9,36 +9,33 @@ public class Player extends Entity{
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    private BufferedImage[] knightLeft = new BufferedImage[8];
-    private BufferedImage[] knightRight = new BufferedImage[8];
-    private BufferedImage[] knightUp = new BufferedImage[8];
-    private BufferedImage[] knightDown = new BufferedImage[8];
+    private final BufferedImage[] spriteUp = new BufferedImage[8];
+    private final BufferedImage[] spriteLeft = new BufferedImage[8];
+    private final BufferedImage[] spriteRight = new BufferedImage[8];
 
     public Player(GamePanel gamePanel,KeyHandler keyH){
         this.gamePanel = gamePanel;
         this.keyH = keyH;
         screenX = gamePanel.screenWidth/2 - (gamePanel.tileSize/2);
         screenY = gamePanel.screenWidth/2 - (gamePanel.tileSize/2);
-        solidArea = new Rectangle(8,16,32,32);
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues(){
-        worldX = gamePanel.tileSize * 16;
-        worldY = gamePanel.tileSize * 18;
-        speed = 4;
-        direction = "down";
+        setX(gamePanel.tileSize*16);
+        setY(gamePanel.tileSize*18);
+        setSpeed(4);
+        setDirection(0);
     }
 
     public void getPlayerImage(){
-
         try{
-            for(int i = 1; i <= 8; i++){
-                knightLeft[i - 1] = ImageIO.read(getClass().getResourceAsStream("/player/player_left" + i + ".png"));
-                knightRight[i - 1] = ImageIO.read(getClass().getResourceAsStream("/player/player_right" + i + ".png"));
-                knightUp[i - 1] = ImageIO.read(getClass().getResourceAsStream("/player/player_up" + i + ".png"));
-                knightDown[i - 1] = ImageIO.read(getClass().getResourceAsStream("/player/player_down" + i + ".png"));
+            for(int i = 0; i < 8; i++){
+                addSpriteDefault(i, ImageIO.read(getClass().getResourceAsStream("/player/player_down" + i + ".png")));
+                spriteUp[i] = ImageIO.read(getClass().getResourceAsStream("/player/player_up" + i + ".png"));
+                spriteLeft[i] = ImageIO.read(getClass().getResourceAsStream("/player/player_left" + i + ".png"));
+                spriteRight[i] = ImageIO.read(getClass().getResourceAsStream("/player/player_right" + i + ".png"));
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -47,67 +44,65 @@ public class Player extends Entity{
 
     }
     public void update() {
-
         if(keyH.up || keyH.down || keyH.left || keyH.right) {
-
-            if (keyH.up) {
-                direction = "up";
-            } else if (keyH.down) {
-                direction = "down";
+            if (keyH.down) {
+                setDirection(0);
+            } else if (keyH.up) {
+                setDirection(1);
             } else if (keyH.left) {
-                direction = "left";
-            } else if (keyH.right) {
-                direction = "right";
+                setDirection(2);
+            } else {
+                setDirection(3);
             }
 
-            spriteCounter += 7.5;
+            setSpriteCounter(getSpriteCounter()+7.5);
 
-            if (spriteCounter == 60) {
-                spriteNum++;
-                if (spriteNum >= 8) {
-                    spriteNum = 1;
+            if (getSpriteCounter() == 60) {
+                setSpriteNum(getSpriteNum()+1);
+                if (getSpriteNum() >= 8) {
+                    setSpriteNum(1);
                 }
-                spriteCounter = 0;
+                setSpriteCounter(0);
             }
-            collide = false;
+            setCollide(false);
             gamePanel.collision.checkTile(this);
 
-            if (!collide) {
-                switch (direction) {
-                    case "up":
-                        worldY -= speed;
-                        if(keyH.right){
-                            worldX += speed/2;
-                        }
-                        else if(keyH.left){
-                            worldX -= speed/2;
-                        }
-                        break;
-                    case "down":
-                        worldY += speed;
-                        if(keyH.right){
-                            worldX += speed/2;
-                        }
-                        else if(keyH.left){
-                            worldX -= speed/2;
-                        }
-                        break;
-                    case "right":
-                        worldX += speed;
+            if (!getCollide()) {
+                switch (getDirection()) {
+                    case 2:
+                        setX(getX()-(getSpeed()));
                         if(keyH.up){
-                            worldY += speed/2;
+                            setY(getY()+getSpeed());
                         }
                         else if(keyH.down){
-                            worldY -= speed/2;
+                            setY(getY()-getSpeed());
                         }
                         break;
-                    case "left":
-                        worldX -= speed;
+                    case 3:
+                        setX(getX()+(getSpeed()));
                         if(keyH.up){
-                            worldY += speed/2;
+                            setY(getY()+getSpeed());
                         }
                         else if(keyH.down){
-                            worldY -= speed/2;
+                            setY(getY()-getSpeed());
+                        }
+                        break;
+                    case 0:
+                        setY(getY()+getSpeed());
+                        if(keyH.right){
+                            setX(getX()+(getSpeed()));
+                        }
+                        else if(keyH.left){
+                            setX(getX()-(getSpeed()));
+                        }
+                        break;
+                    case 1:
+                        setY(getY()-getSpeed());
+                        if(keyH.right){
+                            setX(getX()+(getSpeed()));
+                        }
+                        else if(keyH.left){
+                            setX(getX()-(getSpeed()));
                         }
                         break;
                 }
@@ -116,12 +111,11 @@ public class Player extends Entity{
     }
     public void draw(Graphics2D graphics) {
 
-        BufferedImage image = switch (direction) {
-            case "left" -> knightLeft[spriteNum];
-            case "right" -> knightRight[spriteNum];
-            case "up" -> knightUp[spriteNum];
-            case "down" -> knightDown[spriteNum];
-            default -> null;
+        BufferedImage image = switch (getDirection()) {
+            case 1 -> spriteUp[getSpriteNum()];
+            case 2 -> spriteLeft[getSpriteNum()];
+            case 3 -> spriteRight[getSpriteNum()];
+            default -> getSpriteDefault()[getSpriteNum()];
         };
         graphics.drawImage(image, screenX, screenY, gamePanel.tileSize,gamePanel.tileSize, null);
     }
