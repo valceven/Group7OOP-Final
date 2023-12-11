@@ -8,10 +8,10 @@
 //import java.util.List;
 //import java.util.Objects;
 //public class Ui {
-//    GamePanel gp;
+//    main.GamePanel gp;
 //    Graphics g2;
 //    private MainMenu[] buttons = new MainMenu[3];
-//    public Ui(GamePanel gp){
+//    public Ui(main.GamePanel gp){
 //        this.gp = gp;
 //        buttons[0] = new MainMenu(gp.screenWidth/2, 150* gp.scaleValue,0, gp);
 //        buttons[1] = new MainMenu(gp.screenWidth/2, (int)(220* gp.scaleValue),1, gp);

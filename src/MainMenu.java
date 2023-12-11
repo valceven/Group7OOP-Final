@@ -5,14 +5,14 @@
 //        private boolean mouseOver, mousePressed;
 //        private Rectangle bounds;
 //        private BufferedImage[] imgs;
-//        private static GamePanel gp;
+//        private static main.GamePanel gp;
 //        public static final float SCALE = 2f;
 //        public final int btnWidth_Default = 140;
 //        public final int btnheight_Default = 56;
 //        public final int btnWidth = (int)(btnWidth_Default * SCALE);
 //        public final int btnHeight = (int)(btnheight_Default * SCALE);
 //        private int xOffsetCenter = btnWidth/2;
-//        public MainMenu(int xPos, int yPos, int rowIndex, GamePanel gameState){
+//        public MainMenu(int xPos, int yPos, int rowIndex, main.GamePanel gameState){
 //            this.xPos = xPos;
 //            this.yPos = yPos;
 //            this.rowIndex = rowIndex;
